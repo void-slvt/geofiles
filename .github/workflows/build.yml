@@ -126,6 +126,10 @@ jobs:
         run: |
           go run ./ -c ./config.json
 
+      - name: Download Geosite
+        run: |
+          curl -sSL -o ./output/geosite.dat https://github.com/v2fly/domain-list-community/releases/latest/download/dlc.dat
+
       - name: Git push assets to "release" branch
         if: github.event_name != 'pull_request'
         run: |
@@ -136,13 +140,14 @@ jobs:
           git checkout -b release
           git add -A
           git commit -m "${{ env.RELEASE_NAME }}"
-          git remote add geoip "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
-          git push -f geoip release
+          git remote add geofiles "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f geofiles release
 
       - name: Release and upload assets
         if: github.event_name != 'pull_request'
         run: |
           gh release create ${{ env.TAG_NAME }} -t ${{ env.RELEASE_NAME }} \
-            ./output/geoip.dat
+            ./output/geoip.dat \
+            ./output/geosite.dat
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
