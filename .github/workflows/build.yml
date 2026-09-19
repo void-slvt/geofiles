@@ -61,7 +61,7 @@ jobs:
 
       - name: Get IPs from ASs
         run: |
-          mkdir -p as
+          mkdir -p ./as
           touch ./as/banned_as.txt
           cloudflare=("AS13335")
           aws=("AS16509" "AS14618" "AS8987")
