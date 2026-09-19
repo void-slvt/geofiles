@@ -4,14 +4,15 @@
       "type": "dbipCountryMMDB",
       "action": "add",
       "args": {
-        "uri": "./db-ip/dbip-country-lite.mmdb"
+        "uri": "./db-ip/dbip-country-lite.mmdb",
+        "wantedList": ["ru"] 
       }
     },
     {
       "type": "text",
       "action": "add",
       "args": {
-        "inputDir": "./asn"
+        "inputDir": "./as"
       }
     },
     {
