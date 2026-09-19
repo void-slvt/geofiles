@@ -13,20 +13,16 @@
         {
             "outboundTag": "proxy",
             "ip": [
-                "geoip:oracle",       // AS31898, AS54253, AS1219, AS6142, AS14544, AS20054
                 "geoip:akamai",       // AS20940, AS16625, AS12222, AS33905, AS63949
                 "geoip:hetzner",      // AS24940, AS213230, AS212317, AS215859
-                "geoip:scaleway",     // AS12876, AS29447
                 "geoip:digitalocean", // AS14061, AS46652
                 "geoip:aws",          // AS16509, AS14618, AS8987
                 "geoip:cdn77",        // AS60068, AS212238
                 "geoip:cloudflare",   // AS13335
                 "geoip:fastly",       // AS54113
                 "geoip:ovh",          // AS16276
-                "geoip:vultr",        // AS20473
-                "geoip:creanova",     // AS51765
                 "geoip:telegram"      // AS62041
-                "geoip:banned_asn"    // Все вышеперечисленные ASN в одном теге
+                "geoip:banned-as"    // Все вышеперечисленные AS в одном теге
             ]
         },
     ]
