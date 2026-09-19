@@ -62,7 +62,7 @@ jobs:
       - name: Get IPs from ASs
         run: |
           mkdir -p ./as
-          touch ./as/banned_as.txt
+          touch ./as/banned-as.txt
           cloudflare=("AS13335")
           aws=("AS16509" "AS14618" "AS8987")
           fastly=("AS54113")
@@ -99,7 +99,7 @@ jobs:
           for as in "${telegram[@]}"; do
               bgpq4 -F "%n/%l\n" $as >> ./as/telegram.txt
           done
-          dest_file="./as/banned_as.txt"
+          dest_file="./as/banned-as.txt"
           for file_path in ./as/*.txt; do
               if [ -f "$file_path" ] && [ "$file_path" != "$dest_file" ]; then
                   cat "$file_path" >> "$dest_file"
