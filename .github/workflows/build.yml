@@ -63,19 +63,15 @@ jobs:
         run: |
           mkdir -p asn
           touch ./asn/banned_asn.txt
-          oracle=("AS31898" "AS54253" "AS1219" "AS6142" "AS14544" "AS20054")
+          cloudflare=("AS13335")
+          aws=("AS16509" "AS14618" "AS8987")
+          fastly=("AS54113")
+          cdn77=("AS60068" "AS212238")
+          telegram=("AS62041" "AS211157")
           akamai=("AS20940" "AS16625" "AS12222" "AS33905" "AS63949")
           hetzner=("AS24940" "AS213230" "AS212317" "AS215859")
-          scaleway=("AS12876" "AS29447")
           digitalocean=("AS14061" "AS46652")
-          aws=("AS16509" "AS14618" "AS8987")
-          cdn77=("AS60068" "AS212238")
-          cloudflare=("AS13335")
-          fastly=("AS54113")
           ovh=("AS16276")
-          vultr=("AS20473")
-          creanova=("AS51765")
-          telegram=("AS62041" "AS211157")
           for asn in "${oracle[@]}"; do
               bgpq4 -F "%n/%l\n" $asn >> ./asn/oracle.txt
           done
