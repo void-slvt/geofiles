@@ -59,10 +59,10 @@ jobs:
           mkdir -p db-ip
           mv dbip-country-lite*.mmdb ./db-ip/dbip-country-lite.mmdb
 
-      - name: Get IPs from ASNs
+      - name: Get IPs from ASs
         run: |
-          mkdir -p asn
-          touch ./asn/banned_asn.txt
+          mkdir -p as
+          touch ./as/banned_as.txt
           cloudflare=("AS13335")
           aws=("AS16509" "AS14618" "AS8987")
           fastly=("AS54113")
@@ -72,35 +72,35 @@ jobs:
           hetzner=("AS24940" "AS213230" "AS212317" "AS215859")
           digitalocean=("AS14061" "AS46652")
           ovh=("AS16276")
-          for asn in "${akamai[@]}"; do
-              bgpq4 -F "%n/%l\n" $asn >> ./asn/akamai.txt
+          for as in "${akamai[@]}"; do
+              bgpq4 -F "%n/%l\n" $as >> ./as/akamai.txt
           done
-          for asn in "${hetzner[@]}"; do
-              bgpq4 -F "%n/%l\n" $asn >> ./asn/hetzner.txt
+          for as in "${hetzner[@]}"; do
+              bgpq4 -F "%n/%l\n" $as >> ./as/hetzner.txt
           done
-          for asn in "${digitalocean[@]}"; do
-              bgpq4 -F "%n/%l\n" $asn >> ./asn/digitalocean.txt
+          for as in "${digitalocean[@]}"; do
+              bgpq4 -F "%n/%l\n" $as >> ./as/digitalocean.txt
           done
-          for asn in "${aws[@]}"; do
-              bgpq4 -F "%n/%l\n" $asn >> ./asn/aws.txt
+          for as in "${aws[@]}"; do
+              bgpq4 -F "%n/%l\n" $as >> ./as/aws.txt
           done
-          for asn in "${cdn77[@]}"; do
-              bgpq4 -F "%n/%l\n" $asn >> ./asn/cdn77.txt
+          for as in "${cdn77[@]}"; do
+              bgpq4 -F "%n/%l\n" $as >> ./as/cdn77.txt
           done
-          for asn in "${cloudflare[@]}"; do
-              bgpq4 -F "%n/%l\n" $asn >> ./asn/cloudflare.txt
+          for as in "${cloudflare[@]}"; do
+              bgpq4 -F "%n/%l\n" $as >> ./as/cloudflare.txt
           done
-          for asn in "${fastly[@]}"; do
-              bgpq4 -F "%n/%l\n" $asn >> ./asn/fastly.txt
+          for as in "${fastly[@]}"; do
+              bgpq4 -F "%n/%l\n" $as >> ./as/fastly.txt
           done
-          for asn in "${ovh[@]}"; do
-              bgpq4 -F "%n/%l\n" $asn >> ./asn/ovh.txt
+          for as in "${ovh[@]}"; do
+              bgpq4 -F "%n/%l\n" $as >> ./as/ovh.txt
           done
-          for asn in "${telegram[@]}"; do
-              bgpq4 -F "%n/%l\n" $asn >> ./asn/telegram.txt
+          for as in "${telegram[@]}"; do
+              bgpq4 -F "%n/%l\n" $as >> ./as/telegram.txt
           done
-          dest_file="./asn/banned_asn.txt"
-          for file_path in ./asn/*.txt; do
+          dest_file="./as/banned_as.txt"
+          for file_path in ./as/*.txt; do
               if [ -f "$file_path" ] && [ "$file_path" != "$dest_file" ]; then
                   cat "$file_path" >> "$dest_file"
               fi
